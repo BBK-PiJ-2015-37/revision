@@ -2,6 +2,7 @@ package day_19;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -27,6 +28,16 @@ public class ElementUtils {
             if (matcher.test(element)) {
                 result.add(element);
             }
+        }
+
+        return result;
+    }
+
+    public static <T,R> List<R> transformedList(List<T> list, Function<T,R> transform) {
+        List<R> result = new ArrayList<>();
+
+        for (T obj : list) {
+            result.add(transform.apply(obj));
         }
 
         return result;
