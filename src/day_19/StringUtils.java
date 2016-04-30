@@ -2,6 +2,7 @@ package day_19;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -39,6 +40,17 @@ public class StringUtils {
             if (matcher.test(word)) {
                 result.add(word);
             }
+        }
+
+        return result;
+    }
+
+    public static List<String> transformedList(List<String> list,
+                                               Function<String, String> transform) {
+        List<String> result = new ArrayList<>();
+
+        for (String word: list) {
+            result.add(transform.apply(word));
         }
 
         return result;
