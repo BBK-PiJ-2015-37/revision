@@ -1,5 +1,9 @@
 package day_19;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+
 /**
  * A class for static methods used in day 19 exercises
  *
@@ -24,5 +28,19 @@ public class StringUtils {
         } else {
             return s2;
         }
+    }
+
+    public static List<String> allMatches(List<String> list,
+                                          Predicate<String> matcher) {
+
+        List<String> result = new ArrayList<>();
+
+        for (String word : list) {
+            if (matcher.test(word)) {
+                result.add(word);
+            }
+        }
+
+        return result;
     }
 }
