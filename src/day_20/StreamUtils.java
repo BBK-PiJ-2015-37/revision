@@ -17,4 +17,10 @@ public class StreamUtils {
                                 .limit(sizeOfList)
                                     .collect(Collectors.toList());
     }
+
+    public static List<Integer> orderedNumberList(int start, int step, int sizeOfList) {
+        return Stream.iterate(start, n -> n + step)
+                        .limit(sizeOfList)
+                            .collect(Collectors.toList());
+    }
 }
