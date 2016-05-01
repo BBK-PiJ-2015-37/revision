@@ -18,6 +18,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -27,7 +28,7 @@ public class Exercises {
     @Before
     public void setUpBufferedReader() throws IOException {
         reader = Files.newBufferedReader(
-                Paths.get("SonnetI.txt"), StandardCharsets.UTF_8);
+                Paths.get("C:\\Users\\Sam\\Desktop\\PIJ\\revision\\src\\java8\\lambdahol\\SonnetI.txt"), StandardCharsets.UTF_8);
     }
 
     @After
@@ -48,23 +49,18 @@ public class Exercises {
     // Exercise 1: Print out all the words in wordList, which is a static List<String> .
 
     @Test
-    @Ignore
     public void printAllWords() {
-        /* TODO */
-
-        // We will give you this one to show you the "style"
-        // wordList.forEach(System.out::println);
-
-        // no assertions
+        wordList.stream().forEach(System.out::println);
     }
 
     // Exercise 2: Convert all words in wordList to upper case,
     // and gather the result into an output list.
 
     @Test
-    @Ignore
     public void upperCaseWords() {
-        List<String> output = null; /* TODO */
+        List<String> output = wordList.stream()
+                                    .map(String::toUpperCase)
+                                        .collect(Collectors.toList());
 
         assertEquals(
                 Arrays.asList(
