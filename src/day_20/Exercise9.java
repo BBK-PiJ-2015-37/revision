@@ -19,7 +19,8 @@ public class Exercise9 {
         System.out.println("Original list: " + words.toString());
 
         String result = words.stream()
-                            .reduce("", (a,b) -> a + "," + b);
+                            .reduce((a,b) -> a + "," + b)
+                                .orElse("");
         System.out.println("Concatenated string with commas: " + result);
     }
 }
