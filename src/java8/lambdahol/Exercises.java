@@ -118,9 +118,10 @@ public class Exercises {
     // Exercise 6: Find the length of the longest line in the file.
 
     @Test
-    @Ignore
     public void lengthOfLongestLine() throws IOException {
-        int longest = 0; /* TODO */
+        int longest = reader.lines()
+                                .max((s1,s2) -> s1.length() - s2.length())
+                                    .get().length();
 
         assertEquals(longest, 53);
     }
