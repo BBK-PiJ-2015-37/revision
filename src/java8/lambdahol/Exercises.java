@@ -133,11 +133,10 @@ public class Exercises {
 
 
     @Test
-    @Ignore
     public void listOfAllWords() throws IOException {
         List<String> output = reader.lines()
                                         .map(str -> (str.split(REGEXP)))
-                                            .map(Arrays::toString)
+                                            .flatMap(Arrays::stream)
                                                 .filter(str -> !str.equals(""))
                                                     .collect(Collectors.toList());
 
