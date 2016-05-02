@@ -135,7 +135,7 @@ public class Exercises {
     @Test
     public void listOfAllWords() throws IOException {
         List<String> output = reader.lines()
-                                        .map(str -> (str.split(REGEXP)))
+                                        .map(str -> str.split(REGEXP))
                                             .flatMap(Arrays::stream)
                                                 .filter(str -> !str.equals(""))
                                                     .collect(Collectors.toList());
@@ -163,9 +163,14 @@ public class Exercises {
     // Exercise 8: Create a list containing the words, lowercased, in alphabetical order.
 
     @Test
-    @Ignore
     public void sortedLowerCase() throws IOException {
-        List<String> output = null; /* TODO */
+        List<String> output = reader.lines()
+                                        .map(str -> str.split(REGEXP))
+                                            .flatMap(Arrays::stream)
+                                                .filter(str -> !str.equals(""))
+                                                    .map(String::toLowerCase)
+                                                        .sorted()
+                                                            .collect(Collectors.toList());
 
         assertEquals(
                 Arrays.asList(
