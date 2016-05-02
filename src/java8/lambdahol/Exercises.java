@@ -122,6 +122,7 @@ public class Exercises {
         int longest = reader.lines()
                                 .max((s1,s2) -> s1.length() - s2.length())
                                     .get().length();
+        System.out.println("fnolfmks");
 
         assertEquals(longest, 53);
     }
@@ -135,7 +136,11 @@ public class Exercises {
     @Test
     @Ignore
     public void listOfAllWords() throws IOException {
-        List<String> output = null; /* TODO */
+        List<String> output = reader.lines()
+                                        .map(str -> (str.split(REGEXP)))
+                                            .map(Arrays::toString)
+                                                .filter(str -> !str.equals(""))
+                                                    .collect(Collectors.toList());
 
         assertEquals(
                 Arrays.asList(
