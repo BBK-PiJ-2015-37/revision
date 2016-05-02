@@ -122,7 +122,6 @@ public class Exercises {
         int longest = reader.lines()
                                 .max((s1,s2) -> s1.length() - s2.length())
                                     .get().length();
-        System.out.println("fnolfmks");
 
         assertEquals(longest, 53);
     }
