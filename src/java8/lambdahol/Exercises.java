@@ -242,7 +242,8 @@ public class Exercises {
                                                         .flatMap(Arrays::stream)
                                                             .filter(str -> !str.equals(""))
                                                                 .collect(Collectors.toMap(String::length, Arrays::asList,
-                                                                        (l1,l2) -> Stream.concat(l1.stream(),l2.stream()).collect(Collectors.toList())));
+                                                                        (l1,l2) -> Stream.concat(l1.stream(),l2.stream())
+                                                                                        .collect(Collectors.toList())));
 
         assertEquals(6, map.get(7).size());
         assertEquals(Arrays.asList("increase", "ornament"), map.get(8));
