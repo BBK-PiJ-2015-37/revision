@@ -256,10 +256,13 @@ public class Exercises {
     // number of occurrences of each word. Don't worry about upper case and
     // lower case.
 
-  @Test
-    @Ignore
+    @Test
     public void wordFrequencies() throws IOException {
-        Map<String, Long> map = null; /* TODO */
+        Map<String, Long> map = reader.lines()
+                                        .map(str -> str.split(REGEXP))
+                                            .flatMap(Arrays::stream)
+                                                .filter(str -> !str.equals(""))
+                                                    .collect(Collectors.toMap(str -> str, str -> 1L, (v1,v2) -> v1+1L));
 
         assertEquals(2L, (long) map.get("tender"));
         assertEquals(6L, (long) map.get("the"));
