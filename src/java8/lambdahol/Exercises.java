@@ -199,9 +199,16 @@ public class Exercises {
 
 
     @Test
-    @Ignore
     public void sortedLowerCaseDistinctByLengthThenAlphabetically() throws IOException {
-        List<String> output = null; /* TODO */
+        List<String> output = reader.lines()
+                                        .map(str -> str.split(REGEXP))
+                                            .flatMap(Arrays::stream)
+                                                .filter(str -> !str.equals(""))
+                                                    .map(String::toLowerCase)
+                                                        .sorted()
+                                                            .sorted((s1,s2) -> s1.length() - s2.length())
+                                                                .distinct()
+                                                                    .collect(Collectors.toList());
 
         assertEquals(
                 Arrays.asList(
