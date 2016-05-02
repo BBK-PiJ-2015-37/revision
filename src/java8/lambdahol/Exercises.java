@@ -93,9 +93,8 @@ public class Exercises {
     // located at the root of this NetBeans project.
 
     @Test
-    @Ignore
     public void countLinesInFile() throws IOException {
-        long count = 0L; /* TODO */
+        long count = reader.lines().count();
 
         assertEquals(14, count);
     }
