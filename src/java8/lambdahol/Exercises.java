@@ -241,9 +241,7 @@ public class Exercises {
                                                     .map(str -> str.split(REGEXP))
                                                         .flatMap(Arrays::stream)
                                                             .filter(str -> !str.equals(""))
-                                                                .collect(Collectors.toMap(String::length, Arrays::asList,
-                                                                        (l1,l2) -> Stream.concat(l1.stream(),l2.stream())
-                                                                                        .collect(Collectors.toList())));
+                                                                .collect(Collectors.groupingBy(String::length));
 
         assertEquals(6, map.get(7).size());
         assertEquals(Arrays.asList("increase", "ornament"), map.get(8));
@@ -284,15 +282,14 @@ public class Exercises {
 // with a value of [bazz] (a one-element list of String).
 
     @Test
-    @Ignore
     public void nestedGrouping() throws IOException {
-        Map<String, Map<Integer, List<String>>> map = reader.lines().map(str -> str.split(REGEXP))
-                                                    .flatMap(Arrays::stream).filter(str -> !str.equals(""))
-                                                    .collect(Collectors.toMap(String::length, Arrays::asList,
-                                                        (l1,l2) -> Stream.concat(l1.stream(),l2.stream())
-                                                        .collect(Collectors.toList())));
-                                                    .collect(Collectors.toMap(str -> String.valueOf(str.charAt(0)),
-                                                                //Function for values, //Function for merging));
+        Map<String, Map<Integer, List<String>>> map = reader.lines()
+                                                        .map(str -> str.split(REGEXP))
+                                                            .flatMap(Arrays::stream).filter(str -> !str.equals(""))
+                                                                .collect(Collectors.groupingBy(
+                                                                        str -> String.valueOf(str.charAt(0)),
+                                                                            Collectors.groupingBy(String::length)));
+
 
         assertEquals("[From, Feed]", map.get("F").get(4).toString());
         assertEquals("[by, be, by]", map.get("b").get(2).toString());
