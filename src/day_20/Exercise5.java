@@ -19,7 +19,7 @@ public class Exercise5 {
 
         System.out.println("Original list: " + words.toString());
 
-        Optional<String> result = words.stream()
+        /*Optional<String> result = words.stream()
                                     .map(String::toUpperCase)
                                         .filter(n -> n.length() < 4)
                                             .filter(n -> n.contains("E"))
@@ -29,9 +29,15 @@ public class Exercise5 {
             System.out.println(result.get());
         } else {
             System.out.println("Nothing to print");
-        }
+        }*/
 
-        result = words.stream()
+        System.out.println(words.stream()
+                .map(String::toUpperCase)
+                .filter(n -> n.length() < 4)
+                .filter(n -> n.contains("Q"))
+                .findFirst().orElse("Nothing found"));
+
+        /*result = words.stream()
                     .map(String::toUpperCase)
                         .filter(n -> n.length() < 4)
                             .filter(n -> n.contains("Q"))
@@ -41,6 +47,6 @@ public class Exercise5 {
             System.out.println(result.get());
         } else {
             System.out.println("Nothing to print");
-        }
+        }*/
     }
 }
