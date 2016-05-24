@@ -14,7 +14,7 @@ public class JaggedArray {
     };
 
     public static void transpose(int[][] array){
-        int longestRowLength = findLongestRowLength(p);
+        int longestRowLength = findLongestRowLength(array);
         for (int i = 0; i < longestRowLength; i++) {
             for (int j = 0; j < array.length; j++) {
                 try {
